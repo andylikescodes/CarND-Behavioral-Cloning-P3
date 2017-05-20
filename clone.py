@@ -17,8 +17,12 @@ for line in lines[1:]:
 	current_path = '../simdata/IMG/' + filename
 	image = cv2.imread(current_path)
 	images.append(image)
+	image_flipped= np.fliplr(image)
+	images.append(image_flipped)	
+
 	measurement = float(line[3])
 	measurements.append(measurement)
+	measurements.append(-measurement)
 
 X_train = np.array(images)
 y_train = np.array(measurements)
