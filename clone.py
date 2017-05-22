@@ -18,7 +18,7 @@ def generator(samples, batch_size=32):
     
 
     while 1:
-        shuffle(sampels)
+        samples = sklearn.utils.shuffle(samples)
         for offset in range(0, n_samples, batch_size):
             batch_samples = samples[offset:offset+batch_size]
             images = []
@@ -66,11 +66,11 @@ def generator(samples, batch_size=32):
             X_train = np.array(images)
             y_train = np.array(measurements)
 
-            yield sklearn.utils.shuffle(x_train, y_train)
+            yield sklearn.utils.shuffle(X_train, y_train)
 
 
 from sklearn.model_selection import train_test_split
-train_samples, validation_samples = train_test_spllit(lines[1:], test_size=0.2)
+train_samples, validation_samples = train_test_split(lines[1:], test_size=0.2)
 train_generator = generator(train_samples, batch_size=32)
 validation_generator = generator(validation_samples, batch_size=32)
 
@@ -97,7 +97,7 @@ model.add(Dense(10))
 model.add(Dense(1))
 
 model.compile(loss='mse', optimizer='adam')
-model.fit_generator(train_generator, samples_per_epoch=len(train_samples), validation_data=validation_generator, nv_val_samples=len(validation_samples), nb_epochs=3)
+model.fit_generator(train_generator, samples_per_epoch=len(train_samples), validation_data=validation_generator, nb_val_samples=len(validation_samples), nb_epoch=3)
 
 
 model.save('model.h5')
