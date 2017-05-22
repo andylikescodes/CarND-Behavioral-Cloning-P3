@@ -119,7 +119,7 @@ from sklearn.model_selection import train_test_split
 train_samples, validation_samples = train_test_split(samples, test_size=0.2)
 train_generator = generator(train_samples, batch_size=32)
 validation_generator = generator(validation_samples, batch_size=32)
-n_epoch=2
+n_epoch=3
 
-lenet(train_generator, train_samples, validation_generator, validation_samples, n_epoch)
+nvdia_net(train_generator, train_samples, validation_generator, validation_samples, n_epoch)
 
