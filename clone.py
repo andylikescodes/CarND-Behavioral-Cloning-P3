@@ -123,5 +123,5 @@ train_samples, validation_samples = train_test_split(samples, test_size=0.2)
 train_generator = generator(train_samples, batch_size=32)
 validation_generator = generator(validation_samples, batch_size=32)
 
-lenet(train_generator, train_samples, validation_generator, validation_samples, 11)
+lenet(train_generator, train_samples, validation_generator, validation_samples, 15)
 
