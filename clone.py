@@ -7,7 +7,7 @@ import cv2
 lines = []
 with open('../simdata/driving_log.csv') as csvfile:
     reader = csv.reader(csvfile)
-    steer_corr = 0.1
+    steer_corr = 0.2
     for line in reader:	
         center_path = line[0]
         left_path = line[1]
