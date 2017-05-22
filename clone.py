@@ -76,13 +76,10 @@ def nvdia_net(train_generator, train_samples, validation_generator, validation_s
     model.add(Cropping2D(cropping=((50,25),(0,0)), input_shape = (160,320,3)))
     model.add(Lambda(lambda x: x/255 - 0.5))
     model.add(Convolution2D(24,5,5, subsample=(2,2), activation='relu'))
-    model.add(Dropout(0.5))
     model.add(Convolution2D(36,5,5, subsample=(2,2), activation='relu'))
-    model.add(Dropout(0.5))
     model.add(Convolution2D(48,5,5, subsample=(2,2), activation='relu'))
-    model.add(Dropout(0.5))
     model.add(Convolution2D(64,3,3, activation='relu'))
-    model.add(Dropout(0.5))
+    model.add(Convolution2D(64,3,3, activation='relu'))
     model.add(Flatten())
     model.add(Dense(100))
     model.add(Dense(50))
@@ -122,6 +119,7 @@ from sklearn.model_selection import train_test_split
 train_samples, validation_samples = train_test_split(samples, test_size=0.2)
 train_generator = generator(train_samples, batch_size=32)
 validation_generator = generator(validation_samples, batch_size=32)
+n_epoch=5
 
-lenet(train_generator, train_samples, validation_generator, validation_samples, 15)
+nvdia_net(train_generator, train_samples, validation_generator, validation_samples, 15)
 
