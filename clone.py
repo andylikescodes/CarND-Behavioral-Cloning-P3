@@ -10,22 +10,22 @@ with open('../simdata/driving_log.csv') as csvfile:
     steer_corr = 0.2
     for line in reader:	
         center_path = line[0]
-        left_path = line[1]
-        right_path = line[2]
+        #left_path = line[1]
+        #right_path = line[2]
         filename_center = center_path.split('/')[-1]	
-        filename_left = left_path.split('/')[-1]
-        filename_right = right_path.split('/')[-1]
+        #filename_left = left_path.split('/')[-1]
+        #filename_right = right_path.split('/')[-1]
 
         steer_center = float(line[3])
-        steer_left = steer_center+steer_corr
-        steer_right = steer_center-steer_corr
+        #steer_left = steer_center+steer_corr
+        #steer_right = steer_center-steer_corr
         
         lines.append([filename_center, steer_center, False])		
-        lines.append([filename_left, steer_left, False])
-        lines.append([filename_right, steer_right, False])
-        lines.append([filename_center, -steer_center, True])
-        lines.append([filename_left, -steer_left, True])
-        lines.append([filename_right, -steer_right, True])
+        #lines.append([filename_left, steer_left, False])
+        #lines.append([filename_right, steer_right, False])
+        #lines.append([filename_center, -steer_center, True])
+        #lines.append([filename_left, -steer_left, True])
+        #lines.append([filename_right, -steer_right, True])
 
 samples = lines[1:]
 		
