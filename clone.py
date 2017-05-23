@@ -23,7 +23,7 @@ with open('../simdata/driving_log.csv') as csvfile:
         lines.append([filename_center, steer_center, False])		
         #lines.append([filename_left, steer_left, False])
         #lines.append([filename_right, steer_right, False])
-        #lines.append([filename_center, -steer_center, True])
+        lines.append([filename_center, -steer_center, True])
         #lines.append([filename_left, -steer_left, True])
         #lines.append([filename_right, -steer_right, True])
 
