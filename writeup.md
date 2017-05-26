@@ -1,8 +1,24 @@
-#**Behavioral Cloning**
+# **Behavioral Cloning**
 
-###Model Architecture and Training Strategy
+### Introduction
+#### 1. Problem
+This purpose of this project is to train a deep neural network to predict the steering angle of a vehicle driving autonomously in a simulator.
 
-####1. An appropriate model architecture has been employed
+Tasks includes data collection, data preprocessing, model building and validation.
+
+#### 2. File explained
+
+model.py: containing the data preprocessing and the neural network model.
+
+drive.py: the code to run the trained neural network to make prediction of the steering angle, and run the vehicle in the simulator.
+
+video.py: the utility file containing a function to create a video stream of a track of the autonomous driving.
+
+run1.mp4: a video stream of 1 track autonomously driving in the simulator
+
+### Model Architecture and Training Strategy
+
+#### 1. An appropriate model architecture has been employed
 
 My model consists of five convolution layers (model.py lines 78-82). The first 3 convolution layers have size of 5x5 and depths of 24, 36, while the other 2 have size of 3x3 and depths of 64. There are 4 fully connected layers with output size of 100, 50, 10 and 1 (model.py lines 84-87). This is the nvidia model recommended by the lesson and I found it very effective in training the car the drive.
 
@@ -10,19 +26,19 @@ The model includes RELU layers to introduce nonlinearity (code line 78-82), and 
 
 A preprocessing layer is used to crop the image from the 70 pixels from the top to 25 pixels from the bottom (code line 76).
 
-####2. Attempts to reduce overfitting in the model
+#### 2. Attempts to reduce overfitting in the model
 
 I did not include any regularization (dropout layers for example) in the model. Originally I tried including some dropout layers in the model, however, the nvidia model seems not to learn very well with the dropout layers.
 
 The model was trained and validated on different data sets (training:validation = 8:2) to ensure that the model was not overfitting (code line 118-121). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
-####3. Model parameter tuning
+#### 3. Model parameter tuning
 
 The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 113).
 
 The only parameter that I tune a lot was the epochs I used to train the model. I tried many different combinations and found epoch 15 works the best.
 
-####4. Appropriate training data
+#### 4. Appropriate training data
 
 Training data was chosen to keep the vehicle driving on the road. Originally I used the keyboard input to gather training data, later on I found using a joystick creates more smooth steering angles which significantly increase the data quality. All the training data are collected using a joystick. The training set has about 26,000 images.
 
@@ -32,9 +48,9 @@ I also flipped all the images with a flipped steering angle to increase the size
 
 For details about how I created the training data, see the next section.
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 
-####1. Solution Design Approach
+#### 1. Solution Design Approach
 
 The overall strategy for deriving a model architecture was to fine tune the parameters of a already effective model, try different preprocessing strategies, and collect high quality training data.
 
@@ -52,7 +68,7 @@ The final step was to run the simulator to see how well the car was driving arou
 
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
-####2. Final Model Architecture
+#### 2. Final Model Architecture
 
 The final model architecture (model.py lines 74-93) consisted of a convolution neural network with the following layers and layer sizes:
 
